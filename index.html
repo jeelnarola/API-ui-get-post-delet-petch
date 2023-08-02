@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1px solid black;
+            text-align: center;
+            display: inline-block;
+            margin: auto;
+        }
+        th{
+            padding: 10px 20px;
+            border: 1px dotted black;
+
+        }
+        #disply tr td{
+            padding: 0px 20px;
+            border: 1px solid black;
+            /* margin-bottom: 10px; */
+        }
+        .button{
+            padding: 7px 20px;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .updet{
+            padding: 7px 20px;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text"  id="username">
+        <input type="text" id="password">
+        <input type="submit" value="submit">
+    </form>
+    <table>
+        <thead border="1px" style="margin: 10px;" >
+            <tr>
+                <th>name</th>
+                <th>password</th>
+                <!-- <th>delete</th>
+                <th>updet</th> -->
+            </tr>
+        </thead>
+        <tbody id="disply">
+
+        </tbody>
+
+    </table>
+   <script src="index.js"></script>
+</body>
+</html>
