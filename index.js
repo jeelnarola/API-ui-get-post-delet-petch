@@ -1,5 +1,5 @@
 
-
+let id=-1
 const disply=((data)=>{
     console.log(data)
     data.map((item)=>{
@@ -16,8 +16,15 @@ const disply=((data)=>{
             // console.log(item.id)
         })
         let btn=document.createElement("button")
-      
-        tr.append(td1,td2,td3)
+        btn.innerHTML=`UPDET`
+        btn.addEventListener("click",()=>{
+          document.getElementById("username").value=item.username
+          document.getElementById("password").value=item.password
+          document.getElementById("sbtn").value="updet"
+          id=item.id
+         })
+        btn.setAttribute("class","updet")
+        tr.append(td1,td2,td3,btn)
         document.getElementById("disply").append(tr)
     })
 
@@ -31,22 +38,44 @@ let a = async (id) => {
 
 }
 
+// 
 
 document.querySelector("form").addEventListener("submit",(e)=>{
     e.preventDefault();
+    let tyep=document.getElementById("sbtn").value
+    console.log(tyep);
     let data={
         username:document.getElementById("username").value,
         password:document.getElementById("password").value
     }
     console.log(data)
 
-    fetch("http://localhost:8090/data",{
-        method:"POST",
-        headers: { "Content-Type": "application/json" },
-        body:JSON.stringify(data)
-    })
-    .then((res)=>res.json())
-    .then((data)=>console.log(data))
+    // fetch("http://localhost:8090/data",{
+    //     method:"POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body:JSON.stringify(data)
+    // })
+    // .then((res)=>res.json())
+    // .then((data)=>console.log(data))
+
+    if(tyep=="submit"){
+        fetch("http://localhost:8090/data",{
+            method:"POST",
+            headers: { "Content-Type": "application/json" },
+            body:JSON.stringify(data)
+        })
+    }
+    else{
+        fetch(`http://localhost:8090/data/${id}`,{
+            method:"PATCH",
+            headers: { "Content-Type": "application/json" },
+            body:JSON.stringify(data)
+        })
+        document.getElementById("username").value=""
+        document.getElementById("password").value=""
+        document.getElementById("sbtn").value="submit"
+
+    }
 })
 
 
